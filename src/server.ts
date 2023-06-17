@@ -5,7 +5,7 @@ import router from './routes';
 
 const app: Application = express();
 
-const PORT = process.env.PORT || 1020
+const PORT = process.env.PORT || 1021
 
 
 
