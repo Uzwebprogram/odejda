@@ -14,9 +14,9 @@ class BlogController {
 
     public async Post(req: Request, res: Response) {
         try {
-            const { title_uz,title_ru , title_en , description_uz,description_ru , description_en , link } = req.body
+            const { title_uz,title_ru , title_en , description_uz,description_ru , description_en , image , link } = req.body
 
-            const category = await AppDataSource.getRepository(NewsEntity).createQueryBuilder().insert().into(NewsEntity).values({ title_uz,title_ru , title_en , description_uz,description_ru , description_en , link }).returning("*").execute()
+            const category = await AppDataSource.getRepository(NewsEntity).createQueryBuilder().insert().into(NewsEntity).values({ title_uz,title_ru , title_en , description_uz,description_ru , description_en , image , link }).returning("*").execute()
 
             res.json({
                 status: 201,
@@ -31,11 +31,11 @@ class BlogController {
 
     public async Put(req: Request, res: Response) {
         try {
-            const { title_uz,title_ru , title_en , description_uz,description_ru , description_en , link  } = req.body
+            const { title_uz,title_ru , title_en , description_uz,description_ru , description_en , image , link  } = req.body
             const { id } = req.params
 
             const category = await AppDataSource.getRepository(NewsEntity).createQueryBuilder().update(NewsEntity)
-                .set({ title_uz,title_ru , title_en , description_uz,description_ru , description_en , link  })
+                .set({ title_uz,title_ru , title_en , description_uz,description_ru , description_en , image , link  })
                 .where({ id })
                 .returning("*")
                 .execute()
