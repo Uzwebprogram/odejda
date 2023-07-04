@@ -34,7 +34,7 @@ export class NewsEntity {
     @Column({ type: "varchar", length: 2000 })
     @IsString()
     description_ru: string
-    @Column({ type: "varchar", length: 2000 })
+    @Column({ type: "varchar", length: 2000 , nullable : true })
     @IsString()
     image: string
     @CreateDateColumn({ type: "timestamp" })
