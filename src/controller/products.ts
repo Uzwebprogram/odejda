@@ -4,7 +4,11 @@ import { ProductsEntity } from '../entities/products';
 
 class ProductsController {
     public async Get(req: Request, res: Response): Promise<void> {
-        res.json(await AppDataSource.getRepository(ProductsEntity ).find());
+        const { id } = req.params
+        res.json(await AppDataSource.getRepository(ProductsEntity ).find({
+            relations:{
+                category:true
+            }}));
     }
 
     public async GetId(req: Request, res: Response): Promise<void> {
